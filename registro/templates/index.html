@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+	Mi primera pagina
+{% endblock %}
+
+{% block content %}
+
+	<div class="container">
+	{% if user.is_authenticated %}
+		<a href="{% url 'agregar_registro' %}" class="btn orange"> Agregar Registro </a>
+	{% else %}
+
+	{% endif %}
+
+	
+	<table class="col s12 m12 l12 striped">
+		<thead>
+			<tr>
+				<th>Foto</th>
+				<th>Nombre</th>
+				<th>Edad</th>
+				<th>Acciones</th>
+			</tr>	
+		</thead>
+		<tbody>
+			{% for e in nombre %}
+			<tr>
+				<td>
+					{% if e.foto %}
+						<img src="/media/{{e.foto}}" width="100">
+					{% endif %}
+				</td>
+				<td>{{e.nombre|upper}}</td>
+				<td>{{e.edad}}</td>
+				<td>
+					<a href="{% url 'ver_estudiante' id_est=e.id  %}" class="btn btn-floating btn-large lime"><i class="material-icons">info</i></a>
+					{% if user.is_authenticated %}
+						<a href="{% url 'editar_estudiante' id_est=e.id  %}" class="btn btn-floating btn-large yellow darken-3"><i class="material-icons">mode_edit</i></a>
+						<a href="{% url 'eliminar_estudiante' id_est=e.id  %}"class="btn btn-floating btn-large orange darken-4"><i class="material-icons">delete</i></a>
+			
+					{% endif %}
+				</td>
+				
+			</tr>	
+			{% endfor %}
+				
+		</tbody>
+	</table>
+
+	</div>
+
+{% endblock %}
+

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+Estudiante 
+{% endblock %}
+
+{% block content %}
+	<div class="col s12 m7 l12">
+	<h2 class="header">Datos de {{obj.nombre}}</h2>
+	
+	<div class="card horizontal">
+	  <div class="card-image">
+		<img src="/media/{{obj.foto}}" width="100" height="250">
+	  </div>
+	  <div class="card-stacked">
+		<div class="card-content">
+		  <h5>
+			<p>Nombre: {{obj.nombre}}</p>
+			<p>Direccion: {{obj.direccion}}</p>
+			<p>Edad: {{obj.edad}}</p>
+			<p>Instituto: {{obj.instituto}}</p>
+		  </h5>
+		</div>
+		<div class="card-action">
+			<a href="{% url 'principal' %}" class="btn btn-floating btn-large orange"><i class="material-icons">skip_previous</i></a>
+			{% if obj.correo %}
+				<a href="mailto:{{obj.correo}}"class="btn btn-floating btn-large cyan pulse"><i class="material-icons">mail</i></a>
+			{% endif %}
+		</div>
+	  </div>
+	</div>
+	</div>
+
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+	Agregar
+{% endblock %}
+
+{% block content %}
+	{% if msg %}
+				
+		<div class="card-panel lime center">
+		<h5 class ="">{{msg}}
+		<a href="{% url 'principal' %}" class="btn btn-floating  orange"><i class="material-icons">skip_previous</i></a>
+		</h5>
+		</div>
+	{% endif %}	
+	<div class="container"> 
+	<h4>Nuevo registro de Estudiante</h4>
+		<form action="" method="POST" enctype = "multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_p }}
+		<a href="{% url 'principal' %}" class="btn btn-floating btn-large orange"><i class="material-icons">skip_previous</i></a>
+		<button type="submit" class="btn orange">Guardar</button>
+		</form>	
+	</div>
+
+{% endblock %}
+
